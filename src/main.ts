@@ -46,3 +46,10 @@ console.log(Object.keys(kopp));
 // b) loopa med for...of och skriv ut "namn – pris kr" för varje rätt
 // c) skriv ut namnet på den sista rätten utan att veta antalet (tips: length - 1)
 // TODO
+console.log(meny.length, meny[0].namn);
+
+for (const ratt of meny) {
+  console.log(`${ratt.namn} - ${ratt.pris} kr`);
+}
+
+console.log(meny[meny.length - 1].namn);
