@@ -51,11 +51,24 @@ export function sorteraEfterPris(meny: Ratt[]): Ratt[] {
 //    Slå upp priset för varje id i menyn. Okända id räknas som 0 kr.
 export function totalPris(order: OrderRad[], meny: Ratt[]): number {
   // TODO
+  return order.reduce((summa, rad) => {
+    const ratt = meny.find((r) => r.id === rad.id);
+    const pris = ratt ? ratt.pris : 0;
+    return summa + pris * rad.antal;
+  }, 0);
 }
 
 // 8. Antal rätter per kategori som ett objekt: { bakverk: 3, dryck: 2, lunch: 3 } (reduce)
 export function perKategori(meny: Ratt[]): Record<string, number> {
   // TODO
+  return meny.reduce(
+    (antal, ratt) => {
+      const kategori = ratt.kategori;
+      antal[kategori] = (antal[kategori] || 0) + 1;
+      return antal;
+    },
+    {} as Record<string, number>,
+  );
 }
 
 // 9. En kopia av rätten med nytt pris. Originalet får INTE ändras (spread: { ...ratt }).
