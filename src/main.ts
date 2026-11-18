@@ -26,6 +26,20 @@ console.log(drycker.join(","));
 //    TypeScript klagar på storlek. Beskriv objektet med en interface där storlek är valfri (storlek?: string).
 // d) skriv ut Object.keys(kopp)
 // TODO
+interface menu {
+  namn: string;
+  pris: number;
+  vegetarisk: boolean;
+  storlek?: string;
+}
+
+const kopp: menu = { namn: "Latte", pris: 45, vegetarisk: true };
+console.log(kopp.namn, kopp["pris"]);
+
+kopp.pris = 48;
+kopp.storlek = "stor";
+
+console.log(Object.keys(kopp));
 
 // UPPGIFT 3: arrayer av objekt
 // a) skriv ut hur många rätter menyn har och namnet på den första
